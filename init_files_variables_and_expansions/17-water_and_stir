@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 -c "w='water';s='stir';b='bestchol';W=__import__('os').environ['WATER'];S=__import__('os').environ['STIR'];td=lambda n,b:([td(n,b),0][not n] if not n else sum(b.index(c)*len(b)**i for i,c in enumerate(reversed(n))));fd=lambda n,b:('' if not n else fd(n//len(b),b)+b[n%len(b)]);print(fd(td(W,w)+td(S,s),b) or b[0])"
+python3 /tmp/w.py

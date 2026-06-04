@@ -1,0 +1,13 @@
+#!/bin/bash
+echo $(python3 -c "
+w='water';s='stir';b='bestchol'
+def tod(n,base):
+ r=0
+ for c in n:r=r*len(base)+base.index(c)
+ return r
+def frm(n,base):
+ r=''
+ while n:r=base[n%len(base)]+r;n//=len(base)
+ return r or base[0]
+print(frm(tod('$WATER',w)+tod('$STIR',s),b))
+")

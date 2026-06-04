@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 -c "w='water';s='stir';b='bestchol';t=lambda n,base:sum(base.index(c)*len(base)**i for i,c in enumerate(reversed(n)));r=lambda n,base:''.join(reversed([base[n//len(base)**i%len(base)] for i in range(max(1,__import__('math').floor(__import__('math').log(n+1,len(base)))+1))]));print(r(t('$WATER',w)+t('$STIR',s),b))"
+python3 -c "w='water';s='stir';b='bestchol';W=__import__('os').environ['WATER'];S=__import__('os').environ['STIR'];td=lambda n,b:([td(n,b),0][not n] if not n else sum(b.index(c)*len(b)**i for i,c in enumerate(reversed(n))));fd=lambda n,b:('' if not n else fd(n//len(b),b)+b[n%len(b)]);print(fd(td(W,w)+td(S,s),b) or b[0])"

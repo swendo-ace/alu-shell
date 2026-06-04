@@ -1,13 +1,2 @@
 #!/bin/bash
-echo $(python3 -c "
-w='water';s='stir';b='bestchol'
-def tod(n,base):
- r=0
- for c in n:r=r*len(base)+base.index(c)
- return r
-def frm(n,base):
- r=''
- while n:r=base[n%len(base)]+r;n//=len(base)
- return r or base[0]
-print(frm(tod('$WATER',w)+tod('$STIR',s),b))
-")
+python3 -c "w='water';s='stir';b='bestchol';t=lambda n,base:sum(base.index(c)*len(base)**i for i,c in enumerate(reversed(n)));r=lambda n,base:''.join(reversed([base[n//len(base)**i%len(base)] for i in range(max(1,__import__('math').floor(__import__('math').log(n+1,len(base)))+1))]));print(r(t('$WATER',w)+t('$STIR',s),b))"
